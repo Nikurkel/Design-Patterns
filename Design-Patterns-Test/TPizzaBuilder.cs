@@ -3,6 +3,7 @@
     using NUnit.Framework;
     using Design_Patterns.Builder;
     using System.IO;
+    using System;
 
     [TestFixture]
     public class PizzaBuilderTests
@@ -89,6 +90,60 @@
             Pizza pizza = csvPizzaBuilder.GetPizza();
 
             AssertPizza(referencePizza, pizza);
+
+            File.Delete(csvFilePath);
+        }
+
+        [Test]
+        public void XmlPizzaBuilder_ThrowsWhenXmlFileDoesNotExist()
+        {
+            const string xmlFilePath = "nonexistent.xml";
+            PizzaBuilder xmlPizzaBuilder = new XmlPizzaBuilder(xmlFilePath);
+            PizzaDirector director = new PizzaDirector();
+
+            Assert.Throws<FileNotFoundException>(() => director.Construct(xmlPizzaBuilder));
+        }
+
+        [Test]
+        public void XmlPizzaBuilder_ThrowsWhenXmlFileHasInvalidFormat()
+        {
+            const string xmlFilePath = "invalid.xml";
+            using (StreamWriter writer = new StreamWriter(xmlFilePath))
+            {
+                writer.WriteLine("InvalidFormat");
+            }
+
+            PizzaBuilder xmlPizzaBuilder = new XmlPizzaBuilder(xmlFilePath);
+            PizzaDirector director = new PizzaDirector();
+
+            Assert.Throws<System.Xml.XmlException>(() => director.Construct(xmlPizzaBuilder));
+
+            File.Delete(xmlFilePath);
+        }
+
+        [Test]
+        public void CsvPizzaBuilder_ThrowsWhenCsvFileDoesNotExist()
+        {
+            const string csvFilePath = "nonexistent.csv";
+            var csvPizzaBuilder = new CsvPizzaBuilder(csvFilePath);
+            var director = new PizzaDirector();
+
+            Assert.Throws<FileNotFoundException>(() => director.Construct(csvPizzaBuilder));
+        }
+
+        [Test]
+        public void CsvPizzaBuilder_ThrowsWhenCsvFileHasInvalidFormat()
+        {
+            const string csvFilePath = "invalid.csv";
+            using (var writer = new StreamWriter(csvFilePath))
+            {
+                writer.WriteLine("InvalidFormat");
+            }
+
+            var csvPizzaBuilder = new CsvPizzaBuilder(csvFilePath);
+            var director = new PizzaDirector();
+
+            Assert.Throws<IndexOutOfRangeException>(() => director.Construct(csvPizzaBuilder));
 
             File.Delete(csvFilePath);
         }
