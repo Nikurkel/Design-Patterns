@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\Pizza.cs" />
+    <Compile Include="Builder\PizzaBuilder.cs" />
     <Compile Include="Factory\Cat.cs" />
     <Compile Include="Factory\Dog.cs" />
     <Compile Include="Factory\IPet.cs" />
