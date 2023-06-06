@@ -41,8 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\CsvPizzaBuilder.cs" />
+    <Compile Include="Builder\MargheritaBuilder.cs" />
+    <Compile Include="Builder\PepperoniBuilder.cs" />
     <Compile Include="Builder\Pizza.cs" />
     <Compile Include="Builder\PizzaBuilder.cs" />
+    <Compile Include="Builder\PizzaDirector.cs" />
+    <Compile Include="Builder\XmlPizzaBuilder.cs" />
     <Compile Include="Factory\Cat.cs" />
     <Compile Include="Factory\Dog.cs" />
     <Compile Include="Factory\IPet.cs" />
