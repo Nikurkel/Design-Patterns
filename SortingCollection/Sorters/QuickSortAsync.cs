@@ -1,43 +1,41 @@
-﻿namespace SortingCollection
+﻿namespace SortingCollection.Sorters
 {
+    using SortingCollection.SortingManager;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public class QuickSortAsync : ISorter
+    public class QuickSortAsync : Sorter
     {
-        public int[] Sort(int[] toSort)
+        public QuickSortAsync(ISortingManager sortingManager = null) : base(sortingManager)
         {
-            var array = (int[])toSort.Clone();
-
-            SortArrayAsync(array, 0, array.Length - 1).Wait();
-            return array;
         }
 
-        private async Task SortArrayAsync(int[] array, int leftIndex, int rightIndex)
+        protected override void SortArray()
+        {
+            SortPartitionAsync(0, array.Length - 1).Wait();
+        }
+
+        private async Task SortPartitionAsync(int leftIndex, int rightIndex)
         {
             await Task.Yield();
             var i = leftIndex;
             var j = rightIndex;
-            var pivot = array[(leftIndex + rightIndex) / 2];
+            var pivot = sortingManager.Read(array, (leftIndex + rightIndex) / 2);
             while (i <= j)
             {
-                while (array[i] < pivot)
+                while (sortingManager.Read(array, i) < pivot)
                 {
                     i++;
                 }
 
-                while (array[j] > pivot)
+                while (sortingManager.Read(array, j) > pivot)
                 {
                     j--;
                 }
 
                 if (i <= j)
                 {
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                    i++;
-                    j--;
+                    sortingManager.Swap(array, i++, j--);
                 }
             }
 
@@ -47,12 +45,12 @@
 
                 if (leftIndex < j)
                 {
-                    tasks.Add(SortArrayAsync(array, leftIndex, j));
+                    tasks.Add(SortPartitionAsync(leftIndex, j));
                 }
 
                 if ( i < rightIndex)
                 {
-                    tasks.Add(SortArrayAsync(array, i, rightIndex));
+                    tasks.Add(SortPartitionAsync(i, rightIndex));
                 }
 
                 await Task.WhenAll(tasks.ToArray());
@@ -61,51 +59,47 @@
             {
                 if ( leftIndex < j)
                 {
-                    SortArray(array, leftIndex, j);
+                    SortPartition(leftIndex, j);
                 }
 
                 if ( i < rightIndex)
                 {
-                    SortArray(array, i, rightIndex);
+                    SortPartition(i, rightIndex);
                 }
             }
         }
 
-        private void SortArray(int[] array, int leftIndex, int rightIndex)
+        private void SortPartition(int leftIndex, int rightIndex)
         {
             var i = leftIndex;
             var j = rightIndex;
-            var pivot = array[(leftIndex + rightIndex) / 2];
+            var pivot = sortingManager.Read(array, (leftIndex + rightIndex) / 2);
             while (i <= j)
             {
-                while (array[i] < pivot)
+                while (sortingManager.Read(array, i) < pivot)
                 {
                     i++;
                 }
 
-                while (array[j] > pivot)
+                while (sortingManager.Read(array, j) > pivot)
                 {
                     j--;
                 }
 
                 if (i <= j)
                 {
-                    int temp = array[i];
-                    array[i] = array[j];
-                    array[j] = temp;
-                    i++;
-                    j--;
+                    sortingManager.Swap(array, i++, j--);
                 }
             }
 
             if (leftIndex < j)
             {
-                SortArray(array, leftIndex, j);
+                SortPartition(leftIndex, j);
             }
 
             if (i < rightIndex)
             {
-                SortArray(array, i, rightIndex);
+                SortPartition(i, rightIndex);
             }
         }
     }

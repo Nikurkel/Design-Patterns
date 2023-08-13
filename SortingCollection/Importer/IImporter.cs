@@ -1,4 +1,4 @@
-﻿namespace SortingCollection
+﻿namespace SortingCollection.Importer
 {
     public interface IImporter
     {

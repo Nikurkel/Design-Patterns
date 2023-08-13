@@ -1,4 +1,4 @@
-﻿namespace SortingCollection
+﻿namespace SortingCollection.Importer
 {
     public class SimpleImporter : IImporter
     {
@@ -6,7 +6,7 @@
         {
             return new int[]
             {
-                10, 5, 32, 104, 2, 99, 2023, 69420,
+                10, 5, 32, 104, 2, 99, 2023, 69420, 123456789, int.MaxValue,
             };
         }
     }

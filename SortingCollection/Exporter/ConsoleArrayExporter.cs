@@ -1,10 +1,11 @@
-﻿namespace SortingCollection
+﻿namespace SortingCollection.Exporter
 {
     using System;
+    using System.Collections.Generic;
 
-    class ConsoleExporter : IExporter
+    class ConsoleArrayExporter : IExporter
     {
-        public void ExportData(int[] data)
+        public void ExportData(IEnumerable<string> data)
         {
             Console.WriteLine("Start of array");
 

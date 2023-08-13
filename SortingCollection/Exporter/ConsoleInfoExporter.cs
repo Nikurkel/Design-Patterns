@@ -3,11 +3,14 @@
     using System;
     using System.Collections.Generic;
 
-    public class MinimalistArrayConsoleExporter : IExporter
+    class ConsoleInfoExporter : IExporter
     {
         public void ExportData(IEnumerable<string> data)
         {
-            Console.WriteLine($"size of array: {((IReadOnlyCollection<string>)data).Count}");
+            foreach (var infoRow in data)
+            {
+                Console.WriteLine(infoRow);
+            }
         }
     }
 }

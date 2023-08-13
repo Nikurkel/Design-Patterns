@@ -4,43 +4,45 @@
     using System.Collections.Generic;
     using System.Diagnostics;
 
+    using SortingManager;
+    using Sorters;
+    using Importer;
+    using Exporter;
+
     public class SortingPlayground
     {
         public void Start()
         {
-            IImporter importer = new BigSimpleImporter();
-            IExporter exporter = new MinimalisticConsoleExporter();
-            var array = importer.GetData();
+            IImporter importer = new RandomNumberImporter(10000);
+            IExporter exporter = new ConsoleInfoExporter();
+            ISortingManager sortingManager = new CounterSortingManager();
 
-
-            var sorters = new List<ISorter>()
+            List<Sorter> sorters = new List<Sorter>()
             {
-                new BubbleSort(),
-                new SelectionSort(),
-                new QuickSortAsync(),
-                new QuickSort(),
+                new BubbleSort(sortingManager),
+                new SelectionSort(sortingManager),
+                new QuickSort(sortingManager),
+                new QuickSortAsync(sortingManager),
             };
 
-            foreach (var sorter in sorters)
+            var toSort = importer.GetData();
+
+            foreach(var sorter in sorters)
             {
-                OutputMillisecondsNeededToSort(sorter, array, exporter);
+                ExecuteSort(toSort, exporter, sorter);
             }
+
         }
 
-        private void OutputMillisecondsNeededToSort(
-            ISorter sorter,
-            int[] toSort,
-            IExporter exporter)
+        private static void ExecuteSort(int[] toSort, IExporter exporter, Sorter sorter)
         {
-            var stopWatch = new Stopwatch();
+            sorter.Sort(toSort);
+            var infos = new List<string>();
+            infos.Add($"sorter: {sorter.GetType().Name}");
+            infos.AddRange(sorter.SortingManager.GetInfo());
+            infos.Add(string.Empty);
 
-            Console.WriteLine($"Sorter: {sorter.GetType().Name}");
-
-            stopWatch.Start();
-            var sortedArray = sorter.Sort(toSort);
-            stopWatch.Stop();
-            //exporter.ExportData(sortedArray);
-            Console.WriteLine($"time needed: {stopWatch.ElapsedMilliseconds} ms\n");
+            exporter.ExportData(infos);
         }
     }
 }
