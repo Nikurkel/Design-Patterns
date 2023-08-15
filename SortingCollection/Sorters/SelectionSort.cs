@@ -1,14 +1,8 @@
 ﻿namespace SortingCollection.Sorters
 {
-    using SortingCollection.SortingManager;
-
     public class SelectionSort : Sorter
     {
-        public SelectionSort(ISortingManager sortingManager = null) : base(sortingManager)
-        {
-        }
-
-        protected override void SortArray()
+        protected override void SortArray(int[] array)
         {
             for (int outer = 0; outer < array.Length; outer++)
             {
@@ -17,13 +11,13 @@
 
                 for (int inner = 0; inner <= lastIndex; inner++)
                 {
-                    if (sortingManager.IsBigger(array, inner, highestIndex))
+                    if (IsBigger(array, inner, highestIndex))
                     {
                         highestIndex = inner;
                     }
                 }
 
-                sortingManager.Swap(array, highestIndex, lastIndex);
+                Swap(array, highestIndex, lastIndex);
             }
         }
     }

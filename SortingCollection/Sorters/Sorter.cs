@@ -1,39 +1,80 @@
 ﻿namespace SortingCollection.Sorters
 {
+    using System.Diagnostics;
     using System.Linq;
 
-    using SortingManager;
-
-    public class Sorter
+    public class Sorter : ISorter
     {
-        protected ISortingManager sortingManager;
-        protected int[] array;
+        private int readCounter = 0;
+        private int writeCounter = 0;
+        private Stopwatch stopwatch = new Stopwatch();
 
-        public ISortingManager SortingManager
+        public string[] GetLastSortInfos()
         {
-            get
+            return new string[]
             {
-                return sortingManager;
-            }
+                $"Name: {GetType().Name}",
+                $"Reads: {readCounter}",
+                $"Writes: {writeCounter}",
+                $"Time elapsed (ms): {stopwatch.ElapsedMilliseconds}",
+                "",
+            };
         }
 
-        public Sorter(ISortingManager sortingManager = null)
+        public int[] Sort(int[] toSort)
         {
-            this.sortingManager = sortingManager ?? new DefaultSortingManager();
-        }
-
-        public virtual int[] Sort(int[] toSort)
-        {
-            array = (int[])toSort.Clone();
-            sortingManager.Start();
-            SortArray();
-            sortingManager.Stop();
+            var array = (int[])toSort.Clone();
+            Start();
+            SortArray(array);
+            Stop();
             return array;
         }
 
-        protected virtual void SortArray()
+        protected virtual void SortArray(int[] array)
         {
-            array = array.OrderBy(x => x).ToArray();
+            var sorted = array.OrderBy(x => x);
+            for (int i = 0; i < sorted.Count(); i++)
+            {
+                array[i] = sorted.ToArray()[i];
+            }
+            array = sorted.ToList().ToArray();
+        }
+
+        protected int Read(int[] array, int index)
+        {
+            readCounter++;
+            return array[index];
+        }
+
+        protected void Swap(int[] array, int firstIndex, int secondIndex)
+        {
+            if (firstIndex != secondIndex)
+            {
+                var temp = array[firstIndex];
+                array[firstIndex] = array[secondIndex];
+                array[secondIndex] = temp;
+
+                readCounter += 2;
+                writeCounter += 2;
+            }
+        }
+
+        protected bool IsBigger(int[] array, int firstIndex, int secondIndex)
+        {
+            readCounter += 2;
+            return array[firstIndex] > array[secondIndex];
+        }
+
+        private void Start()
+        {
+            writeCounter = 0;
+            readCounter = 0;
+            stopwatch.Restart();
+        }
+
+        private void Stop()
+        {
+            stopwatch.Stop();
         }
     }
 }

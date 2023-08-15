@@ -1,49 +1,43 @@
 ﻿namespace SortingCollection.Sorters
 {
-    using SortingCollection.SortingManager;
-
     public class QuickSort : Sorter
     {
-        public QuickSort(ISortingManager sortingManager = null) : base(sortingManager)
+        protected override void SortArray(int[] array)
         {
+            SortPartition(array, 0, array.Length - 1);
         }
 
-        protected override void SortArray()
-        {
-            SortPartition(0, array.Length - 1);
-        }
-
-        private void SortPartition(int leftIndex, int rightIndex)
+        private void SortPartition(int[] array, int leftIndex, int rightIndex)
         {
             var i = leftIndex;
             var j = rightIndex;
-            var pivot = sortingManager.Read(array, (leftIndex + rightIndex) / 2);
+            var pivot = Read(array, (leftIndex + rightIndex) / 2);
             while (i <= j)
             {
-                while (sortingManager.Read(array, i) < pivot)
+                while (Read(array, i) < pivot)
                 {
                     i++;
                 }
 
-                while (sortingManager.Read(array, j) > pivot)
+                while (Read(array, j) > pivot)
                 {
                     j--;
                 }
 
                 if (i <= j)
                 {
-                    sortingManager.Swap(array, i++, j--);
+                    Swap(array, i++, j--);
                 }
             }
 
             if (leftIndex < j)
             {
-                SortPartition(leftIndex, j);
+                SortPartition(array, leftIndex, j);
             }
 
             if (i < rightIndex)
             {
-                SortPartition(i, rightIndex);
+                SortPartition(array, i, rightIndex);
             }
         }
     }

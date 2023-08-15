@@ -1,10 +1,7 @@
 ﻿namespace SortingCollection
 {
-    using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
 
-    using SortingManager;
     using Sorters;
     using Importer;
     using Exporter;
@@ -13,16 +10,16 @@
     {
         public void Start()
         {
-            IImporter importer = new RandomNumberImporter(10000);
+            IImporter importer = new RandomNumberImporter(100000);
             IExporter exporter = new ConsoleInfoExporter();
-            ISortingManager sortingManager = new CounterSortingManager();
 
-            List<Sorter> sorters = new List<Sorter>()
+            var sorters = new List<ISorter>()
             {
-                new BubbleSort(sortingManager),
-                new SelectionSort(sortingManager),
-                new QuickSort(sortingManager),
-                new QuickSortAsync(sortingManager),
+                new Sorter(),
+                new BubbleSort(),
+                new SelectionSort(),
+                new QuickSort(),
+                new QuickSortAsync(),
             };
 
             var toSort = importer.GetData();
@@ -34,14 +31,10 @@
 
         }
 
-        private static void ExecuteSort(int[] toSort, IExporter exporter, Sorter sorter)
+        private static void ExecuteSort(int[] toSort, IExporter exporter, ISorter sorter)
         {
             sorter.Sort(toSort);
-            var infos = new List<string>();
-            infos.Add($"sorter: {sorter.GetType().Name}");
-            infos.AddRange(sorter.SortingManager.GetInfo());
-            infos.Add(string.Empty);
-
+            var infos = sorter.GetLastSortInfos();
             exporter.ExportData(infos);
         }
     }
