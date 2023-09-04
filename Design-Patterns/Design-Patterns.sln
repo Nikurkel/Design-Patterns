@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingCollection", "..\Sor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting-Collection-Test", "..\Sorting-Collection-Test\Sorting-Collection-Test.csproj", "{54509F1E-9508-409B-881D-4C992F73AF53}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberConverter", "..\NumberConverter\NumberConverter.csproj", "{056ED6DB-1B56-4E56-B546-7C32087943EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberConverter-Test", "..\NumberConverter-Test\NumberConverter-Test.csproj", "{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{54509F1E-9508-409B-881D-4C992F73AF53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54509F1E-9508-409B-881D-4C992F73AF53}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54509F1E-9508-409B-881D-4C992F73AF53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{056ED6DB-1B56-4E56-B546-7C32087943EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{056ED6DB-1B56-4E56-B546-7C32087943EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{056ED6DB-1B56-4E56-B546-7C32087943EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{056ED6DB-1B56-4E56-B546-7C32087943EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
