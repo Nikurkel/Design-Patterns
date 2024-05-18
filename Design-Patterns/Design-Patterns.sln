@@ -1,19 +1,22 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31911.196
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Design-Patterns", "Design-Patterns.csproj", "{39BBBC47-28F2-40AE-B1F4-7795BAF7B48D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Design-Patterns-Test", "..\Design-Patterns-Test\Design-Patterns-Test.csproj", "{DD2CCDAF-09BE-43F0-AED1-C87BF4B32C24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingCollection", "..\SortingCollection\SortingCollection.csproj", "{623189D7-B0DB-497C-A660-36DA94880F0D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SortingCollection", "..\SortingCollection\SortingCollection.csproj", "{623189D7-B0DB-497C-A660-36DA94880F0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sorting-Collection-Test", "..\Sorting-Collection-Test\Sorting-Collection-Test.csproj", "{54509F1E-9508-409B-881D-4C992F73AF53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorting-Collection-Test", "..\Sorting-Collection-Test\Sorting-Collection-Test.csproj", "{54509F1E-9508-409B-881D-4C992F73AF53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberConverter", "..\NumberConverter\NumberConverter.csproj", "{056ED6DB-1B56-4E56-B546-7C32087943EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberConverter", "..\NumberConverter\NumberConverter.csproj", "{056ED6DB-1B56-4E56-B546-7C32087943EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NumberConverter-Test", "..\NumberConverter-Test\NumberConverter-Test.csproj", "{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberConverter-Test", "..\NumberConverter-Test\NumberConverter-Test.csproj", "{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDDLib", "..\TDDLib\TDDLib.csproj", "{7E862A38-F7C0-4E5F-BB5B-65FFCFDBC61F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDLibTests", "..\TTDDLib\TDDLibTests.csproj", "{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +48,14 @@ Global
 		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA6EC074-D9D9-488E-B2B5-3DC310BDA45C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E862A38-F7C0-4E5F-BB5B-65FFCFDBC61F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E862A38-F7C0-4E5F-BB5B-65FFCFDBC61F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E862A38-F7C0-4E5F-BB5B-65FFCFDBC61F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E862A38-F7C0-4E5F-BB5B-65FFCFDBC61F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
