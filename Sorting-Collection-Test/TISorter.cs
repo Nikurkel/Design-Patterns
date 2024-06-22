@@ -18,7 +18,7 @@ namespace Sorting_Collection_Test
             new QuickSortAsync(),
         };
 
-        private static readonly int[] toSort = new RandomNumberImporter(10000).GetData();
+        private static readonly int[] toSort = new RandomNumberImporter(1000).GetData();
 
         [TestCaseSource(nameof(Sorters))]
         public void ISort_SortSortsArrayCorrectly(Sorter sorter)

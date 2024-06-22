@@ -1,6 +1,6 @@
 ﻿namespace SortingCollection.Sorters
 {
-    using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public class QuickSortAsync : Sorter
@@ -8,12 +8,23 @@
 
         protected override void SortArray(int[] array)
         {
-            SortPartitionAsync(array, 0, array.Length - 1).Wait();
+            var x = SortPartitionAsync(array).GetAwaiter().GetResult();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = x[i];
+            }
         }
 
-        private async Task SortPartitionAsync(int[] array, int leftIndex, int rightIndex)
+        private async Task<int[]> SortPartitionAsync(int[] array)
         {
-            await Task.Yield();
+            var leftIndex = 0;
+            var rightIndex = array.Length - 1;
+
+            if (leftIndex >= rightIndex)
+            {
+                return array;
+            }
+
             var i = leftIndex;
             var j = rightIndex;
             var pivot = Read(array, (leftIndex + rightIndex) / 2);
@@ -35,68 +46,23 @@
                 }
             }
 
-            if (rightIndex - leftIndex > array.Length / 10)
-            {
-                var tasks = new List<Task>();
+            //Parallel.Invoke(
+            //    async () => await SortPartitionAsync(array, leftIndex, j),
+            //    async () => await SortPartitionAsync(array, i, rightIndex));
 
-                if (leftIndex < j)
+            var leftArray = array[leftIndex..(j+1)];
+            var rightArray = array[i..(rightIndex+1)];
+
+            var arrays = await Task.WhenAll(
+                new[]
                 {
-                    tasks.Add(SortPartitionAsync(array, leftIndex, j));
-                }
+                    SortPartitionAsync(leftArray),
+                    SortPartitionAsync(rightArray),
+                });
 
-                if ( i < rightIndex)
-                {
-                    tasks.Add(SortPartitionAsync(array, i, rightIndex));
-                }
+            var newArray = arrays.SelectMany(x => x).ToArray();
 
-                await Task.WhenAll(tasks.ToArray());
-            }
-            else
-            {
-                if ( leftIndex < j)
-                {
-                    SortPartition(array, leftIndex, j);
-                }
-
-                if ( i < rightIndex)
-                {
-                    SortPartition(array, i, rightIndex);
-                }
-            }
-        }
-
-        private void SortPartition(int[] array, int leftIndex, int rightIndex)
-        {
-            var i = leftIndex;
-            var j = rightIndex;
-            var pivot = Read(array, (leftIndex + rightIndex) / 2);
-            while (i <= j)
-            {
-                while (Read(array, i) < pivot)
-                {
-                    i++;
-                }
-
-                while (Read(array, j) > pivot)
-                {
-                    j--;
-                }
-
-                if (i <= j)
-                {
-                    Swap(array, i++, j--);
-                }
-            }
-
-            if (leftIndex < j)
-            {
-                SortPartition(array, leftIndex, j);
-            }
-
-            if (i < rightIndex)
-            {
-                SortPartition(array, i, rightIndex);
-            }
+             return newArray;
         }
     }
 }

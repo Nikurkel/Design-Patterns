@@ -16,7 +16,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumberConverter-Test", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDDLib", "..\TDDLib\TDDLib.csproj", "{7E862A38-F7C0-4E5F-BB5B-65FFCFDBC61F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDLibTests", "..\TTDDLib\TDDLibTests.csproj", "{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TDDLibTests", "..\TTDDLib\TDDLibTests.csproj", "{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddVocabulary", "..\TddVocabulary\TddVocabulary.csproj", "{53CF2E18-5BAF-4D67-9ABB-7B1786B1E043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TddVocabularyTests", "..\TddVocabularyTests\TddVocabularyTests.csproj", "{F1EC92C3-ECEC-4E0C-85F3-2B48B9D55347}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -56,6 +60,14 @@ Global
 		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB9D208-8CB0-41BC-881D-3D2F0CFC7FBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53CF2E18-5BAF-4D67-9ABB-7B1786B1E043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53CF2E18-5BAF-4D67-9ABB-7B1786B1E043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53CF2E18-5BAF-4D67-9ABB-7B1786B1E043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53CF2E18-5BAF-4D67-9ABB-7B1786B1E043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1EC92C3-ECEC-4E0C-85F3-2B48B9D55347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1EC92C3-ECEC-4E0C-85F3-2B48B9D55347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1EC92C3-ECEC-4E0C-85F3-2B48B9D55347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1EC92C3-ECEC-4E0C-85F3-2B48B9D55347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

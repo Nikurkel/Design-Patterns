@@ -19,7 +19,7 @@
 
             for (int i = 0; i < size; i++)
             {
-                l.Add(random.Next());
+                l.Add(random.Next(size));
             }
 
             return l.ToArray();

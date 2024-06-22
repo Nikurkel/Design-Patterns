@@ -50,10 +50,7 @@
         {
             if (firstIndex != secondIndex)
             {
-                var temp = array[firstIndex];
-                array[firstIndex] = array[secondIndex];
-                array[secondIndex] = temp;
-
+                (array[secondIndex], array[firstIndex]) = (array[firstIndex], array[secondIndex]);
                 readCounter += 2;
                 writeCounter += 2;
             }

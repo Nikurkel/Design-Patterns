@@ -58,6 +58,6 @@ public class TStackX
             stack.Push(item);
         }
 
-        Assert.That(stack.Size, Is.EqualTo(expectedSize));
+        Assert.That(stack.GetSize(), Is.EqualTo(expectedSize));
     }
 }

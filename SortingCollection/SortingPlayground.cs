@@ -10,14 +10,14 @@
     {
         public void Start()
         {
-            IImporter importer = new RandomNumberImporter(100000);
+            IImporter importer = new RandomNumberImporter(10);
             IExporter exporter = new ConsoleInfoExporter();
 
             var sorters = new List<ISorter>()
             {
-                new Sorter(),
-                new BubbleSort(),
-                new SelectionSort(),
+                //new Sorter(),
+                //new BubbleSort(),
+                //new SelectionSort(),
                 new QuickSort(),
                 new QuickSortAsync(),
             };

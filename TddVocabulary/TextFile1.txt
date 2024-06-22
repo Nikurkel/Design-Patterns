@@ -1,0 +1,98 @@
+﻿Entwickle eine App, mit der man nach dem Schema 1-von-4 Vokabeln lernen kann.
+
+Der Anwender lernt auf der Basis von Vokabelkästen. Jeder Kasten ist mit einer
+Menge von Vokabeln aus einem Kartenstapel gefüllt. Jede Vokabel hat mindestens
+eine Übersetzung.
+
+Beim Abfragen wird eine Vokabel allerdings mit vier möglichen Übersetzungen
+präsentiert – von denen nur eine richtig ist. Die Abfrage ist mit einem Timeout
+versehen. Der Anwender kann also die korrekte Übersetzung auswählen oder eine
+inkorrekte oder er läuft in den Timeout. Alle drei Fälle werden in der
+Statistik des Kastens gezählt.
+
+Nach Antwort (oder Timeout) gibt die Anwendung Feedback, indem sie die
+gegebene Antwort mit der richtigen vergleicht.
+
+Nach einer Abfrage kann der Anwender sich weiter abfragen lassen – oder
+er wartet auf eine Notifikation. [1] In welchem Rhythmus er sich notifizieren
+lassen möchte, legt er fest, wenn er den Vokabelkasten öffnet. Diese
+Einstellung kann jederzeit verändert werden.
+
+Gleichzeitig können mehrere Vokabelkästen geöffnet sein. Kästen können aber
+natürlich auch geschlossen werden. Dann finden keine weitere Erinnerungen
+statt, aber sie sind noch gelistet. Ein gelöschter Kasten verschwindet
+komplett.
+
+Da jede Vokabel nur mit einer Übersetzung versehen sein muss, wählt die App
+die weiteren Übersetzungsoptionen aus der Restmenge der Vokabeln per Zufall
+aus, bis vier Optionen vorhanden sind. Die Optionen werden pro Abfrage neu
+gemischt.
+
+Wurde eine Vokabel drei Mal korrekt beantwortet, wird sie nicht wieder
+vorgelegt. Ist ein Kasten durchgearbeitet, werden die Vokabeln (soweit noch
+ungenügend beantwortet) wieder vorgelegt – allerdings in einer anderen
+Reihenfolge.
+
+Solange eine per Notifikation vorgelegte Vokabel nicht bearbeitet wurde,
+werden weitere Notifikationen ausgesetzt. Sollte die Beantwortung 2, 5, 10 Tage
+ausbleiben, wird jeweils eine Erinnerungsemail gesendet – solange der Kasten
+geöffnet ist.
+
+Wenn in einem Kasten nur noch 5 ungenügend beantwortete Vokabeln sind, wird der
+Kasten automatisch geschlossen und mit einer Email darüber informiert.
+
+Verschiedene Kartenstapel sind zur Auswahl im System hinterlegt.
+
+Sobald eine Vokabelkasten mit einem Kartenstapel geöffnet wurde, spiegeln sich
+Änderungen am Kartenstapel nicht im Kasten wider.
+
+Der Anwender meldet sich mit Nickname, Email und Passwort an. Er kann sofort
+loslernen – aber er muss auch seine Email-Adresse durch Klick auf einen Link
+in einer Email bestätigen. Tut er das nicht, dann sind seine Vokabelkästen nach
+5 Tagen gesperrt. Er kann jederzeit bis zur Bestätigung eine neue
+Bestätigungsemail anfordern.
+
+Bei App-Start muss der Anwender sich anmelden – es sei denn, er hat sich die
+Speicherung seiner Anmeldedaten gewünscht. Hat er sein Passwort vergessen, kann
+er es unter Angabe seines Nickname oder der Email-Adresse zurücksetzen.
+
+Das Passwort kann bei den Kontodaten auch jederzeit geändert werden.
+
+Es soll geben:
+
+eine Übersicht der geöffneten Kästen mit knapper Statistik, wie der Fortschritt
+jeweils ist; in der Übersicht wird auch angezeigt, zu welchen Kästen eine
+Notifikation vorliegt; hier werden auch neue Kästen eröffnet
+eine Abfrage einer Vokabel in einem Kasten
+eine Einstellungsseite pro Kasten mit Angaben zum Wiedervorlagerhythmus, dem
+zugrundeliegenden Kartenstapel (der nach Eröffnung nicht mehr verändert werden
+kann) und der Möglichkeit zum Schließen/Öffnen.
+eine Möglichkeit zur Registrierung und Veränderung der Kontodaten
+Daten
+Kartenstapel(Bezeichnung, Version, Stapelcode, Karte*) Karte(Vokabel, korrekte
+Übersetzung [, inkorrekte Übersetzung] [, inkorrekte Übersetzung] [, inkorrekte
+Übersetzung])
+
+Vokabel und Übersetzungen können mehrzeilige Texte sein.
+
+Variation #1
+Anwender können eigene Kartenstapel hochladen. Mit denen können sie ihre
+Vokabelkästen befüllen. Oder sie können sie Freunden über einen Stapelcode
+zugänglich machen.
+
+Dann muss es noch eine Übersicht der eigenen hochgeladenen Kartenstapel geben.
+Darin kann hochladen, löschen und andere per Email zu einem Kartenstapel
+einladen.
+
+Variation #2.1
+Es gibt pro Kartenstapel eine Übersicht mit Lernständen anderer Anwender.
+Vergleichswert könnten die korrekten Antworten pro Zeit sein, z.B. wären dann
+10 korrekt in 3 Tagen (3,33/Tag) besser als 15 korrekt in 5 Tagen (3/Tag).
+Aber 15 korrekt in 5 Tagen wären besser als 8 in 3 Tagen (2,66/Tag). Außerdem
+könnten noch die Fehlversuche gezählt werden: Bei Gleichstand laut Koeffizient
+würden dann weniger Fehlerversuche besser bewertet.
+
+Variation #2.2
+In den Kontodaten oder den Einstellungen pro Kasten kann man eine Liste von
+Freunden verwalten (per Nickname oder Email-Adresse), deren Lernstände in der
+Übersicht angezeigt werden.
